@@ -1,0 +1,96 @@
+{
+    "General": {
+        "Model": "",
+        "Serial Number": "",
+        "Manufacturer": "",
+        "Year": ""
+    },
+    "Body": {
+        "Main Body": {
+            "Material": "",
+            "Finish": "",
+            "Color": ""
+        },
+        "Cavities": {
+            "Control Cavity": [],
+            "Pickup Cavities": []
+        },
+        "Pickguard": {
+            "Material": "",
+            "Color": ""
+        }
+    },
+    "Neck": {
+        "Material": "",
+        "Finish": "",
+        "Fretboard": {
+            "Material": "",
+            "Radius": "",
+            "Frets": {
+                "Number of Frets": 0,
+                "Material": ""
+            },
+            "Inlays": []
+        },
+        "Headstock": {
+            "Shape": "",
+            "Logo": ""
+        },
+        "Truss Rod": {
+            "Type": "",
+            "Adjustment": ""
+        }
+    },
+    "Hardware": {
+        "Bridge": {
+            "Type": "",
+            "Material": ""
+        },
+        "Tuners": {
+            "Type": "",
+            "Material": ""
+        },
+        "Strap Buttons": {
+            "Material": "",
+            "Color": ""
+        },
+        "Output Jack": {
+            "Type": "",
+            "Location": ""
+        }
+    },
+    "Electronics": {
+        "Pickups": {
+            "Neck Pickup": {
+                "Type": "",
+                "Manufacturer": ""
+            },
+            "Middle Pickup": {
+                "Type": "",
+                "Manufacturer": ""
+            },
+            "Bridge Pickup": {
+                "Type": "",
+                "Manufacturer": ""
+            }
+        },
+        "Potentiometers": {
+            "Volume": {
+                "Type": "",
+                "Value": ""
+            },
+            "Tone": {
+                "Type": "",
+                "Value": ""
+            }
+        },
+        "Switch": {
+            "Type": "",
+            "Position": ""
+        },
+        "Wiring": {
+            "Type": "",
+            "Shielding": ""
+        }
+    }
+}

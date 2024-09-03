@@ -1,0 +1,1186 @@
+{
+  "parameters": [
+    {
+      "id": "scaleType",
+      "parameter": "type",
+      "name": "Scale Type",
+      "type": "select",
+      "options": ["Single-Scale", "Multi-scale"],
+      "defaultValue": "Single-Scale",
+      "component": "General",
+      "general": true,
+      "showInPanel": true,
+      "description": "Choose between Single-Scale or Multi-scale",
+      "advanced": {
+        "description": "Determines whether the guitar has a single scale length or multiple scale lengths.",
+        "children": ["scaleLengthBass", "scaleLengthTreb"]
+      },
+      "order": 0
+    },
+    {
+      "id": "fretCount",
+      "parameter": "count",
+      "name": "Number of Frets",
+      "type": "number",
+      "defaultValue": 24,
+      "component": "Neck.Fretboard",
+      "general": true,
+      "showInPanel": true,
+      "showInBar": true,
+      "description": "The total number of frets",
+      "advanced": {
+        "description": "The total number of frets on the fretboard, affecting the guitar's range.",
+        "children": []
+      },
+      "order": 1
+    },
+    {
+      "id": "stringCount",
+      "parameter": "count",
+      "name": "Number of Strings",
+      "type": "number",
+      "defaultValue": 6,
+      "component": "General",
+      "general": true,
+      "showInPanel": true,
+      "showInBar": true,
+      "description": "The total number of strings",
+      "advanced": {
+        "description": "The number of strings on the guitar, affecting its range and playability.",
+        "children": []
+      },
+      "order": 2
+    },
+    {
+      "id": "neutralFret",
+      "parameter": "fret",
+      "name": "Neutral Fret",
+      "type": "number",
+      "defaultValue": 9,
+      "component": "Neck.Fretboard",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "The fret which is perpendicular to the fretboard's centerline when scale lengths aren't equal",
+      "advanced": {
+        "description": "For Multi-scale guitars, this is the fret that remains perpendicular to the centerline.",
+        "children": []
+      },
+      "order": 3
+    },
+    {
+      "id": "scaleLengthBass",
+      "parameter": "length",
+      "name": "Bass Scale Length",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 25.5,
+      "component": "General",
+      "general": true,
+      "showInPanel": true,
+      "showInBar": true,
+      "description": "Scale length for the top-most string of a Multi-scale guitar",
+      "advanced": {
+        "description": "The scale length for the bass (lowest) string in a Multi-scale guitar setup.",
+        "children": ["scaleLengthTreb"]
+      },
+      "order": 4
+    },
+    {
+      "id": "scaleLengthTreb",
+      "parameter": "length",
+      "name": "Treble Scale Length",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 24.75,
+      "component": "General",
+      "general": false,
+      "showInPanel": true,
+      "showInBar": false,
+      "description": "Scale length for the bottom-most string of a Multi-scale guitar",
+      "advanced": {
+        "description": "The scale length for the treble (highest) string in a Multi-scale guitar setup.",
+        "children": ["scaleLengthBass"]
+      },
+      "order": 5
+    },
+    {
+      "id": "guitarLength",
+      "parameter": "length",
+      "name": "Overall Length",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 38.25,
+      "component": "General",
+      "general": true,
+      "showInPanel": true,
+      "showInBar": false,
+      "description": "Overall length of the guitar-- along the X-axis",
+      "advanced": {
+        "description": "The total length of the guitar from the tip of the headstock to the end of the body.",
+        "children": ["bodyLength", "headstockLength"]
+      },
+      "order": 6
+    },
+    {
+      "id": "guitarWidth",
+      "parameter": "width",
+      "name": "Overall Width",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 12.75,
+      "component": "General",
+      "general": true,
+      "showInPanel": true,
+      "showInBar": false,
+      "description": "Overall width of the guitar-- along the Y-axis",
+      "advanced": {
+        "description": "The maximum width of the guitar, typically measured across the lower bout.",
+        "children": ["bodyWidth"]
+      },
+      "order": 7
+    },
+    {
+      "id": "guitarHeight",
+      "parameter": "height",
+      "name": "Overall Height",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 1.75,
+      "component": "General",
+      "general": true,
+      "showInPanel": true,
+      "showInBar": false,
+      "description": "Overall thickness of the guitar-- along the Z-axis",
+      "advanced": {
+        "description": "The maximum thickness of the guitar, including body and any protruding parts.",
+        "children": ["bodyHeight"]
+      },
+      "order": 8
+    },
+    {
+      "id": "bodyLength",
+      "parameter": "length",
+      "name": "Body Length",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 16,
+      "component": "Body",
+      "general": false,
+      "showInPanel": true,
+      "showInBar": false,
+      "description": "Overall length of the body-- along the X-axis",
+      "advanced": {
+        "description": "The length of the guitar body, measured from the neck joint to the end of the body.",
+        "children": ["guitarLength"]
+      },
+      "order": 9
+    },
+    {
+      "id": "bodyWidth",
+      "parameter": "width",
+      "name": "Body Width",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 12.75,
+      "component": "Body",
+      "general": false,
+      "showInPanel": true,
+      "showInBar": false,
+      "description": "Overall width of the body-- along the Y-axis",
+      "advanced": {
+        "description": "The maximum width of the guitar body, typically measured across the lower bout.",
+        "children": ["guitarWidth"]
+      },
+      "order": 10
+    },
+    {
+      "id": "bodyHeight",
+      "parameter": "height",
+      "name": "Body Height",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 1.5,
+      "component": "Body",
+      "general": false,
+      "showInPanel": true,
+      "showInBar": false,
+      "description": "Overall thickness of the guitar body-- along the Z-axis",
+      "advanced": {
+        "description": "The thickness of the guitar body, affecting tone and weight.",
+        "children": ["guitarHeight"]
+      },
+      "order": 11
+    },
+    {
+      "id": "headstockLength",
+      "parameter": "length",
+      "name": "Headstock Length",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 6.375,
+      "component": "Headstock",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Overall length of the headstock-- along the X-axis",
+      "advanced": {
+        "description": "The length of the headstock from the nut to the tip.",
+        "children": ["guitarLength"]
+      },
+      "order": 12
+    },
+    {
+      "id": "headstockWidth",
+      "parameter": "width",
+      "name": "Headstock Width",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 2.4375,
+      "component": "Headstock",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Overall width of the headstock-- along the Y-axis",
+      "advanced": {
+        "description": "The maximum width of the headstock.",
+        "children": []
+      },
+      "order": 13
+    },
+    {
+      "id": "headstockHeight",
+      "parameter": "height",
+      "name": "Headstock Height",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.5625,
+      "component": "Headstock",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Overall thickness of the headstock-- along the Z-axis",
+      "advanced": {
+        "description": "The thickness of the headstock.",
+        "children": []
+      },
+      "order": 14
+    },
+    {
+      "id": "fretboardHeight",
+      "parameter": "height",
+      "name": "Fretboard Height",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.25,
+      "component": "Neck.Fretboard",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Overall thickness of the fretboard-- along the Z-axis",
+      "advanced": {
+        "description": "The thickness of the fretboard material.",
+        "children": []
+      },
+      "order": 15
+    },
+    {
+      "id": "heelExtension",
+      "parameter": "length",
+      "name": "Heel Extension",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.25,
+      "component": "Neck",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Length of the material beyond of the final fret of the fretboard toward the bridge",
+      "advanced": {
+        "description": "The extension of the neck beyond the last fret, affecting the neck joint.",
+        "children": []
+      },
+      "order": 16
+    },
+    {
+      "id": "fretboardExtension",
+      "parameter": "length",
+      "name": "Fretboard Extension",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.375,
+      "component": "Neck.Fretboard",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Length of the material forward of the nut-edge of the fretboard toward the headstock",
+      "advanced": {
+        "description": "The extension of the fretboard beyond the nut, affecting the transition to the headstock.",
+        "children": []
+      },
+      "order": 17
+    },
+    {
+      "id": "marginNutBass",
+      "parameter": "margin",
+      "name": "Nut Bass Margin",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.09375,
+      "component": "Neck.Fretboard",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "The gap between the center of the bass string and the edge of the fretboard at the nut-end",
+      "advanced": {
+        "description": "The distance from the edge of the fretboard to the center of the lowest string at the nut.",
+        "children": []
+      },
+      "order": 18
+    },
+    {
+      "id": "marginHeelBass",
+      "parameter": "margin",
+      "name": "Heel Bass Margin",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.125,
+      "component": "Neck.Fretboard",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "The gap between the center of the bass string and the edge of the fretboard at the heel-end",
+      "advanced": {
+        "description": "The distance from the edge of the fretboard to the center of the lowest string at the heel.",
+        "children": []
+      },
+      "order": 19
+    },
+    {
+      "id": "saddleSpacing",
+      "parameter": "spacing",
+      "name": "Saddle Spacing",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.416,
+      "component": "Hardware.Bridge",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Spacing between each saddle-- center-to-center",
+      "advanced": {
+        "description": "The distance between the centers of adjacent saddles on the bridge.",
+        "children": []
+      },
+      "order": 20
+    },
+    {
+      "id": "nutSlotSpacing",
+      "parameter": "spacing",
+      "name": "Nut Slot Spacing",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.2776,
+      "component": "Neck",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Spacing between each slot on the nut-- center-to-center",
+      "advanced": {
+        "description": "The distance between the centers of adjacent string slots on the nut.",
+        "children": []
+      },
+      "order": 21
+    },
+    {
+      "id": "nutLength",
+      "parameter": "length",
+      "name": "Nut Length",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 1.652,
+      "component": "Neck",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Overall length of the nut-- along the Y-axis",
+      "advanced": {
+        "description": "The total length of the nut, typically spanning the width of the fretboard.",
+        "children": []
+      },
+      "order": 22
+    },
+    {
+      "id": "nutWidth",
+      "parameter": "width",
+      "name": "Nut Width",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.126,
+      "component": "Neck",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Overall width of the nut-- along the X-axis",
+      "advanced": {
+        "description": "The width of the nut, affecting the transition from headstock to fretboard.",
+        "children": []
+      },
+      "order": 23
+    },
+    {
+      "id": "nutHeight",
+      "parameter": "height",
+      "name": "Nut Height",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.196,
+      "component": "Neck",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Overall height of the nut-- along the Z-axis",
+      "advanced": {
+        "description": "The height of the nut, affecting string action at the first fret.",
+        "children": []
+      },
+      "order": 24
+    },
+    {
+      "id": "nutDepth",
+      "parameter": "depth",
+      "name": "Nut Slot Depth",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.125,
+      "component": "Neck",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "The depth of which the nut slot must be cut",
+      "advanced": {
+        "description": "The depth of the slot in which the nut sits.",
+        "children": []
+      },
+      "order": 25
+    },
+    {
+      "id": "tangWidth",
+      "parameter": "width",
+      "name": "Fret Tang Width",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.023,
+      "component": "Neck.Fretboard",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Width of the fret tang for the fret slot",
+      "advanced": {
+        "description": "The width of the fret tang, determining the width of the fret slot.",
+        "children": []
+      },
+      "order": 26
+    },
+    {
+      "id": "tangDepth",
+      "parameter": "depth",
+      "name": "Fret Tang Depth",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.055,
+      "component": "Neck.Fretboard",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Depth of the fret tang for the fret slot",
+      "advanced": {
+        "description": "The depth of the fret tang, determining how deep the fret sits in the fretboard.",
+        "children": []
+      },
+      "order": 27
+    },
+    {
+      "id": "fretCrownWidth",
+      "parameter": "width",
+      "name": "Fret Crown Width",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.084,
+      "component": "Neck.Fretboard",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Width of the crown of the fret",
+      "advanced": {
+        "description": "The width of the fret crown, affecting playability and tone.",
+        "children": []
+      },
+      "order": 28
+    },
+    {
+      "id": "fretCrownHeight",
+      "parameter": "height",
+      "name": "Fret Crown Height",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.039,
+      "component": "Neck.Fretboard",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Height of the crown of the fret",
+      "advanced": {
+        "description": "The height of the fret crown above the fretboard surface.",
+        "children": []
+      },
+      "order": 29
+    },
+    {
+      "id": "zeroFretCrownWidth",
+      "parameter": "width",
+      "name": "Zero Fret Crown Width",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.084,
+      "component": "Neck.Fretboard",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Width of the crown of the zero fret",
+      "advanced": {
+        "description": "The width of the zero fret crown, if used.",
+        "children": []
+      },
+      "order": 30
+    },
+    {
+      "id": "zeroFretCrownHeight",
+      "parameter": "height",
+      "name": "Zero Fret Crown Height",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.039,
+      "component": "Neck.Fretboard",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Height of the crown of the zero fret",
+      "advanced": {
+        "description": "The height of the zero fret crown above the fretboard surface, if used.",
+        "children": []
+      },
+      "order": 31
+    },
+    {
+      "id": "nutRadius",
+      "parameter": "radius",
+      "name": "Nut Radius",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 12,
+      "component": "Neck.Fretboard",
+      "general": false,
+      "showInPanel": true,
+      "showInBar": false,
+      "description": "Radius of the fretboard at the nut",
+      "advanced": {
+        "description": "The radius of the fretboard curvature at the nut end.",
+        "children": ["heelRadius"]
+      },
+      "order": 32
+    },
+    {
+      "id": "heelRadius",
+      "parameter": "radius",
+      "name": "Heel Radius",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 16,
+      "component": "Neck.Fretboard",
+      "general": false,
+      "showInPanel": true,
+      "showInBar": false,
+      "description": "Radius of the fretboard at the heel",
+      "advanced": {
+        "description": "The radius of the fretboard curvature at the heel end.",
+        "children": ["nutRadius"]
+      },
+      "order": 33
+    },
+    {
+      "id": "heelCurveRadius",
+      "parameter": "radius",
+      "name": "Heel Curve Radius",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 4,
+      "component": "Neck",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Radius of the fretboard heel-edge curve",
+      "advanced": {
+        "description": "The radius of the curve at the heel end of the fretboard.",
+        "children": []
+      },
+      "order": 34
+    },
+    {
+      "id": "heelFillet",
+      "parameter": "radius",
+      "name": "Heel Fillet Radius",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.125,
+      "component": "Neck",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Fillet radius for the fretboard heel-edge corners",
+      "advanced": {
+        "description": "The radius of the fillet applied to the corners of the fretboard at the heel.",
+        "children": []
+      },
+      "order": 35
+    },
+    {
+      "id": "blindFretSlot",
+      "parameter": "length",
+      "name": "Blind Fret Slot",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.0625,
+      "component": "Neck.Fretboard",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "The distance from the edge of the fretboard to the end of the hidden tang",
+      "advanced": {
+        "description": "The length of the fret slot that doesn't extend fully to the edge of the fretboard.",
+        "children": []
+      },
+      "order": 36
+    },
+    {
+      "id": "bindingInset",
+      "parameter": "length",
+      "name": "Binding Inset",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.03125,
+      "component": "Neck.Fretboard",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "The distance inward to reduce the perimeter of the fretboard for applying a binding",
+      "advanced": {
+        "description": "The depth of the inset for fretboard binding, if used.",
+        "children": []
+      },
+      "order": 37
+    },
+    {
+      "id": "fretMarkerDiaTop",
+      "parameter": "diameter",
+      "name": "Top Fret Marker Diameter",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.1875,
+      "component": "Neck.Fretboard",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Diameter of the fret markers along the surface of the fretboard",
+      "advanced": {
+        "description": "The diameter of the fret position markers on the fretboard surface.",
+        "children": []
+      },
+      "order": 38
+    },
+    {
+      "id": "fretMarkerDiaSide",
+      "parameter": "diameter",
+      "name": "Side Fret Marker Diameter",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.0625,
+      "component": "Neck.Fretboard",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Diameter of the fret markers along the edge of the fretboard",
+      "advanced": {
+        "description": "The diameter of the fret position markers on the side of the fretboard.",
+        "children": []
+      },
+      "order": 39
+    },
+    {
+      "id": "fretMarkerDepth",
+      "parameter": "depth",
+      "name": "Fret Marker Depth",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.0625,
+      "component": "Neck.Fretboard",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Depth of the fret markers from the surface of the fretboard",
+      "advanced": {
+        "description": "The depth of the fret position markers inlaid into the fretboard.",
+        "children": []
+      },
+      "order": 40
+    },
+    {
+      "id": "fretMarkerOctaveSpacing",
+      "parameter": "spacing",
+      "name": "Octave Marker Spacing",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 1,
+      "component": "Neck.Fretboard",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "The distance between the center points of the fret markers at the octaves",
+      "advanced": {
+        "description": "The spacing between the centers of double fret markers at octave positions.",
+        "children": []
+      },
+      "order": 41
+    },
+    {
+      "id": "fretScallopDepthBass",
+      "parameter": "depth",
+      "name": "Bass Scallop Depth",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.0625,
+      "component": "Neck.Fretboard",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Depth of the scallop cut on the bass edge",
+      "advanced": {
+        "description": "The depth of scalloping on the bass side of the fretboard, if used.",
+        "children": []
+      },
+      "order": 42
+    },
+    {
+      "id": "fretScallopDepthTreb",
+      "parameter": "depth",
+      "name": "Treble Scallop Depth",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.125,
+      "component": "Neck.Fretboard",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Depth of the scallop cut on the treble edge",
+      "advanced": {
+        "description": "The depth of scalloping on the treble side of the fretboard, if used.",
+        "children": []
+      },
+      "order": 43
+    },
+    {
+      "id": "fretScallopFillet",
+      "parameter": "radius",
+      "name": "Scallop Fillet Radius",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.125,
+      "component": "Neck.Fretboard",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "This fillet is used to help blend the scallop into the fretboard as desired",
+      "advanced": {
+        "description": "The radius of the fillet used to blend the scallop into the fretboard surface.",
+        "children": []
+      },
+      "order": 44
+    },
+    {
+      "id": "fallAwayFret",
+      "parameter": "fret",
+      "name": "Fallaway Start Fret",
+      "type": "number",
+      "defaultValue": 14,
+      "component": "Neck.Fretboard",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "At which fret the fallaway taper begins",
+      "advanced": {
+        "description": "The fret number where the fretboard fallaway taper begins.",
+        "children": []
+      },
+      "order": 45
+    },
+    {
+      "id": "stringGauge1",
+      "parameter": "gauge",
+      "name": "String 1 Gauge",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.011,
+      "component": "Strings",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "In standard tuning- typically your ' e ' string",
+      "advanced": {
+        "description": "The gauge of the highest (thinnest) string, typically the high E string.",
+        "children": []
+      },
+      "order": 46
+    },
+    {
+      "id": "stringGauge2",
+      "parameter": "gauge",
+      "name": "String 2 Gauge",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.014,
+      "component": "Strings",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "In standard tuning- typically your ' B ' string",
+      "advanced": {
+        "description": "The gauge of the second string, typically the B string.",
+        "children": []
+      },
+      "order": 47
+    },
+    {
+      "id": "stringGauge3",
+      "parameter": "gauge",
+      "name": "String 3 Gauge",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.018,
+      "component": "Strings",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "In standard tuning- typically your ' G ' string",
+      "advanced": {
+        "description": "The gauge of the third string, typically the G string.",
+        "children": []
+      },
+      "order": 48
+    },
+    {
+      "id": "stringGauge4",
+      "parameter": "gauge",
+      "name": "String 4 Gauge",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.028,
+      "component": "Strings",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "In standard tuning- typically your ' D ' string",
+      "advanced": {
+        "description": "The gauge of the fourth string, typically the D string.",
+        "children": []
+      },
+      "order": 49
+    },
+    {
+      "id": "stringGauge5",
+      "parameter": "gauge",
+      "name": "String 5 Gauge",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.038,
+      "component": "Strings",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "In standard tuning- typically your ' A ' string",
+      "advanced": {
+        "description": "The gauge of the fifth string, typically the A string.",
+        "children": []
+      },
+      "order": 50
+    },
+    {
+      "id": "stringGauge6",
+      "parameter": "gauge",
+      "name": "String 6 Gauge",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.049,
+      "component": "Strings",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "In standard tuning- typically your ' E ' string",
+      "advanced": {
+        "description": "The gauge of the sixth string, typically the low E string.",
+        "children": []
+      },
+      "order": 51
+    },
+    {
+      "id": "stringGauge7",
+      "parameter": "gauge",
+      "name": "String 7 Gauge",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0,
+      "component": "Strings",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Reserved for 7-string guitar",
+      "advanced": {
+        "description": "The gauge of the seventh string, if present (for 7-string guitars).",
+        "children": []
+      },
+      "order": 52
+    },
+    {
+      "id": "stringGauge8",
+      "parameter": "gauge",
+      "name": "String 8 Gauge",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0,
+      "component": "Strings",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Reserved for 8-string guitar",
+      "advanced": {
+        "description": "The gauge of the eighth string, if present (for 8-string guitars).",
+        "children": []
+      },
+      "order": 53
+    },
+    {
+      "id": "stringAction",
+      "parameter": "height",
+      "name": "String Action",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.0625,
+      "component": "Neck",
+      "general": false,
+      "showInPanel": true,
+      "showInBar": false,
+      "description": "The clearance between the bottom of strings and the crown of the frets",
+      "advanced": {
+        "description": "The height of the strings above the frets, affecting playability and tone.",
+        "children": []
+      },
+      "order": 54
+    },
+    {
+      "id": "boutBottomAngle",
+      "parameter": "angle",
+      "name": "Bottom Bout Angle",
+      "type": "number",
+      "unit": "deg",
+      "defaultValue": 85,
+      "component": "Body",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Angle of the bottom bout curve",
+      "advanced": {
+        "description": "The angle of the curve forming the bottom bout of the guitar body.",
+        "children": []
+      },
+      "order": 55
+    },
+    {
+      "id": "boutWaistAngle",
+      "parameter": "angle",
+      "name": "Waist Bout Angle",
+      "type": "number",
+      "unit": "deg",
+      "defaultValue": 80,
+      "component": "Body",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Angle of the waist bout curve",
+      "advanced": {
+        "description": "The angle of the curve forming the waist of the guitar body.",
+        "children": []
+      },
+      "order": 56
+    },
+    {
+      "id": "boutTopAngle",
+      "parameter": "angle",
+      "name": "Top Bout Angle",
+      "type": "number",
+      "unit": "deg",
+      "defaultValue": 75,
+      "component": "Body",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Angle of the top bout curve",
+      "advanced": {
+        "description": "The angle of the curve forming the top bout of the guitar body.",
+        "children": []
+      },
+      "order": 57
+    },
+    {
+      "id": "boutShoulderAngle",
+      "parameter": "angle",
+      "name": "Shoulder Bout Angle",
+      "type": "number",
+      "unit": "deg",
+      "defaultValue": 90,
+      "component": "Body",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Angle of the shoulder bout curve",
+      "advanced": {
+        "description": "The angle of the curve forming the shoulder of the guitar body.",
+        "children": []
+      },
+      "order": 58
+    },
+    {
+      "id": "hyoidDistance",
+      "parameter": "length",
+      "name": "Hyoid Distance",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 1,
+      "component": "Headstock",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Distance between the nut and the hyoid of the headstock",
+      "advanced": {
+        "description": "The distance from the nut to the point where the headstock begins to widen.",
+        "children": []
+      },
+      "order": 59
+    },
+    {
+      "id": "hyoidAngle",
+      "parameter": "angle",
+      "name": "Hyoid Angle",
+      "type": "number",
+      "unit": "deg",
+      "defaultValue": 80,
+      "component": "Headstock",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Angle of the hyoid curve",
+      "advanced": {
+        "description": "The angle of the curve where the headstock begins to widen.",
+        "children": []
+      },
+      "order": 60
+    },
+    {
+      "id": "headstockEndSpacing",
+      "parameter": "length",
+      "name": "Headstock End Spacing",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 1.59375,
+      "component": "Headstock",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Distance between the nut and the end of the headstock",
+      "advanced": {
+        "description": "The distance from the nut to the tip of the headstock.",
+        "children": []
+      },
+      "order": 61
+    },
+    {
+      "id": "headstockEndAngle",
+      "parameter": "angle",
+      "name": "Headstock End Angle",
+      "type": "number",
+      "unit": "deg",
+      "defaultValue": 70,
+      "component": "Headstock",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Angle of the headstock end curve",
+      "advanced": {
+        "description": "The angle of the curve at the tip of the headstock.",
+        "children": []
+      },
+      "order": 62
+    },
+    {
+      "id": "fretThickness1",
+      "parameter": "thickness",
+      "name": "1st Fret Thickness",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.8,
+      "component": "Neck",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Overall thickness of the neck at the 1st fret's position- including the fretboard thickness",
+      "advanced": {
+        "description": "The total thickness of the neck, including fretboard, at the first fret position.",
+        "children": []
+      },
+      "order": 63
+    },
+    {
+      "id": "fretThickness12",
+      "parameter": "thickness",
+      "name": "12th Fret Thickness",
+      "type": "number",
+      "unit": "in",
+      "defaultValue": 0.85,
+      "component": "Neck",
+      "general": false,
+      "showInPanel": false,
+      "showInBar": false,
+      "description": "Overall thickness of the neck at the 12th fret's position- including the fretboard thickness",
+      "advanced": {
+        "description": "The total thickness of the neck, including fretboard, at the twelfth fret position.",
+        "children": []
+      },
+      "order": 64
+    },
+    {
+      "id": "dexterity",
+      "parameter": "type",
+      "name": "Dexterity",
+      "type": "select",
+      "options": ["Right-Handed", "Left-Handed"],
+      "defaultValue": "Right-Handed",
+      "component": "General",
+      "general": true,
+      "showInPanel": true,
+      "description": "Select the preferred hand orientation for playing the instrument.",
+      "advanced": {
+        "description": "Specifies the hand orientation that best suits the player's style and comfort.",
+        "children": []
+      },
+      "order": 65
+    }
+  ]
+}
