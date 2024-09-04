@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronRight, Layers, SquarePen, Eye, EyeOff, Lock, Unlock, ChevronDown, ChevronUp, Palette, View, Shuffle } from 'lucide-react'
+import { Layers, SquarePen, Eye, EyeOff, Lock, Unlock, Palette, View, ChevronRight, Shuffle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 
@@ -70,73 +70,16 @@ const layerStructure: LayerNode = {
   ],
 }
 
-type ContextMenuProps = {
-  x: number
-  y: number
-  onClose: () => void
-  onExpand: () => void
-  onCollapse: () => void
-}
-
-const ContextMenu: React.FC<ContextMenuProps> = ({ x, y, onClose, onExpand, onCollapse }) => {
-  const menuRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const handleClickOutside = () => {
-      if (contextMenu) {
-        closeContextMenu()
-      }
-    }
-
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        onClose()
-      }
-    }
-
-    document.addEventListener('mousedown', handleClickOutside)
-    document.addEventListener('keydown', handleEscape)
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-      document.removeEventListener('keydown', handleEscape)
-    }
-  }, [onClose])
-
-  return (
-    <div
-      ref={menuRef}
-      className="fixed bg-white border rounded shadow-lg py-2 z-50"
-      style={{ left: x, top: y, width: '128px' }}
-    >
-      <button
-        className="w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center"
-        onClick={onExpand}
-      >
-        <ChevronDown className="h-4 w-4 mr-2" />
-        Expand
-      </button>
-      <button
-        className="w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center"
-        onClick={onCollapse}
-      >
-        <ChevronUp className="h-4 w-4 mr-2" />
-        Collapse
-      </button>
-    </div>
-  )
-}
-
 type LayerTreeProps = {
   node: LayerNode
   level?: number
   isLast?: boolean
-  onContextMenu: (e: React.MouseEvent, node: LayerNode) => void
   selectedId: string | null
   onSelect: (id: string | null) => void
   colorMode: boolean
 }
 
-const LayerTree: React.FC<LayerTreeProps> = ({ node, level = 0, isLast = true, onContextMenu, selectedId, onSelect, colorMode }) => {
+const LayerTree: React.FC<LayerTreeProps> = ({ node, level = 0, isLast = true, selectedId, onSelect, colorMode }) => {
   const [isOpen, setIsOpen] = useState(true)
   const [isVisible, setIsVisible] = useState(node.visible)
   const [isLocked, setIsLocked] = useState(node.locked)
@@ -158,11 +101,6 @@ const LayerTree: React.FC<LayerTreeProps> = ({ node, level = 0, isLast = true, o
   const toggleLock = (e: React.MouseEvent) => {
     e.stopPropagation()
     setIsLocked(!isLocked)
-  }
-
-  const handleContextMenu = (e: React.MouseEvent) => {
-    e.preventDefault()
-    onContextMenu(e, node)
   }
 
   const handleSelect = () => {
@@ -198,7 +136,6 @@ const LayerTree: React.FC<LayerTreeProps> = ({ node, level = 0, isLast = true, o
             !isLocked ? 'bg-red-100' : ''
           }`}
           onClick={node.type === 'group' ? toggleOpen : handleSelect}
-          onContextMenu={handleContextMenu}
           role="button"
           aria-expanded={isOpen}
           tabIndex={0}
@@ -272,7 +209,6 @@ const LayerTree: React.FC<LayerTreeProps> = ({ node, level = 0, isLast = true, o
                 node={childNode}
                 level={level + 1}
                 isLast={index === node.children!.length - 1}
-                onContextMenu={onContextMenu}
                 selectedId={selectedId}
                 onSelect={onSelect}
                 colorMode={colorMode}
@@ -290,14 +226,12 @@ interface LayerBrowserProps {
 }
 
 export default function LayerBrowser({ isOpen }: LayerBrowserProps) {
-  const [contextMenu, setContextMenu] = useState<{ x: number; y: number; node: LayerNode } | null>(null)
   const [selectedId, setSelectedId] = useState<string | null>(null)
-  const containerRef = useRef<HTMLDivElement>(null)
   const [colorMode, setColorMode] = useState(false)
 
   const generateUnsaturatedColor = () => {
     const hue = Math.floor(Math.random() * 360)
-    return `hsl(${hue}, 75%, 25%)` // Less saturated, lighter color
+    return `hsl(${hue}, 75%, 50%)` // More vibrant color
   }
 
   const assignColors = useCallback((node: LayerNode): LayerNode => {
@@ -332,32 +266,6 @@ export default function LayerBrowser({ isOpen }: LayerBrowserProps) {
     }
   }, [colorMode, assignColors])
 
-  const handleContextMenu = (e: React.MouseEvent, node: LayerNode) => {
-    e.preventDefault()
-    if (containerRef.current) {
-      const rect = containerRef.current.getBoundingClientRect()
-      setContextMenu({
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
-        node,
-      })
-    }
-  }
-
-  const closeContextMenu = () => {
-    setContextMenu(null)
-  }
-
-  const expandAll = () => {
-    // Implement expand all logic here
-    closeContextMenu()
-  }
-
-  const collapseAll = () => {
-    // Implement collapse all logic here
-    closeContextMenu()
-  }
-
   const handleSelect = (id: string | null) => {
     setSelectedId(id)
   }
@@ -366,26 +274,13 @@ export default function LayerBrowser({ isOpen }: LayerBrowserProps) {
     setLayers(prevLayers => assignColors({ ...prevLayers }))
   }, [assignColors])
 
-  useEffect(() => {
-    const handleClickOutside = () => {
-      if (contextMenu) {
-        closeContextMenu()
-      }
-    }
-
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [contextMenu])
-
   return (
     <div 
       className={`absolute top-0 left-0 bottom-0 w-80 bg-white border rounded-lg border-gray-200 transform transition-transform duration-150 ease-out ${
         isOpen ? 'translate-x-0' : '-translate-x-full'
       }`}
     >
-      <div className="flex flex-col h-full bg-gray-50 text-gray-900 rounded-lg">
+      <div className="flex flex-col h-full bg-secondary text-gray-900 rounded-lg">
         <div className="flex flex-col gap-4 p-4">
           <div className="flex items-center justify-between">
             <h2 className="text-sm font-medium text-gray-950">Layer Browser</h2>
@@ -455,20 +350,10 @@ export default function LayerBrowser({ isOpen }: LayerBrowserProps) {
           <div className="h-full bg-white p-4 font-mono text-[13px] leading-4 rounded-lg overflow-y-auto">
             <LayerTree
               node={layers}
-              onContextMenu={handleContextMenu}
               selectedId={selectedId}
               onSelect={handleSelect}
               colorMode={colorMode}
             />
-            {contextMenu && (
-              <ContextMenu
-                x={contextMenu.x}
-                y={contextMenu.y}
-                onClose={closeContextMenu}
-                onExpand={expandAll}
-                onCollapse={collapseAll}
-              />
-            )}
           </div>
         </div>
       </div>

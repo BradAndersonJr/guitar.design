@@ -27,7 +27,7 @@ const CanvasToolbar: React.FC<CanvasToolbarProps> = ({ showRulers, rulerWidth })
 
   const handleButtonClick = (label: string, canBeActive: boolean) => {
     if (canBeActive) {
-      setActiveButton(label)
+      setActiveButton(prevActive => prevActive === label ? null : label);
     }
     // Add any other click handling logic here
   }
@@ -48,7 +48,7 @@ const CanvasToolbar: React.FC<CanvasToolbarProps> = ({ showRulers, rulerWidth })
                   variant="ghost"
                   size="icon"
                   className={`hover:bg-gray-200 ${item.canBeActive && activeButton === item.label ? 'bg-gray-200' : ''}`}
-                  onClick={() => handleButtonClick(item.label, item.canBeActive)}
+                  onClick={() => handleButtonClick(item.label, item.canBeActive ?? false)}
                 >
                   {item.icon}
                   <span className="sr-only">{item.label}</span>

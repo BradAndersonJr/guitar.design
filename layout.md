@@ -55,7 +55,7 @@ src/
 │   │   ├── LayerContextMenu.tsx
 │   │   └── index.ts
 │   ├── canvas/
-│   │   ├── SVGCanvas.tsx
+│   │   ├── Canvas.tsx
 │   │   ├── CanvasToolbar.tsx
 │   │   ├── CanvasResize.tsx
 │   │   ├── CanvasLanding.tsx

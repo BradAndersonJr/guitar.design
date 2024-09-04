@@ -19,8 +19,10 @@ const Header: React.FC = () => {
   return (
     <header className="bg-background p-3 px-4 flex items-center z-10">
       <div className="flex items-center space-x-2 w-1/4">
-        <h1 className="text-xl font-bold">guitar.design</h1>
-        <Badge variant="secondary" className="text-xs">ALPHA</Badge>
+        <h1 className="text-xl font-semibold text-[--brand]">
+          guitar<span className="text-gray-500">.</span>design
+        </h1>
+        <Badge variant="secondary" className="text-xs font-normal">Private Alpha</Badge>
       </div>
       <div className="flex-1 flex justify-center w-1/2">
         <NavigationMenuComponent />

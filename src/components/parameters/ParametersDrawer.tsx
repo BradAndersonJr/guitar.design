@@ -262,7 +262,7 @@ const ParametersDrawer: React.FC = () => {
   })
 
   return (
-    <CustomDrawerContent className="h-[calc(100vh-64px)] max-h-[calc(100vh-64px)] top-16 flex flex-col bg-gray-50">
+    <CustomDrawerContent className="h-[calc(100vh-64px)] max-h-[calc(100vh-64px)] top-16 flex flex-col bg-secondary">
       <div className="flex flex-col h-full overflow-hidden pr-8 pl-8 pb-8 pt-2">
         <div className="mb-4 flex justify-between items-center">
           <h2 className="text-2xl font-bold">Parameter Sheet</h2>
@@ -368,9 +368,9 @@ const ParametersDrawer: React.FC = () => {
                         ${density === "compact" ? "h-7" : 
                           density === "comfortable" ? "h-9" : 
                           "h-11"}
-                        ${row.original.type === "group" ? "bg-gray-50" : ""}
+                        ${row.original.type === "group" ? "bg-secondary" : ""}
                         ${row.original.advanced ? "bg-blue-50" : ""}
-                        hover:bg-gray-50 transition-colors
+                        hover:bg-secondary transition-colors
                       `}
                     >
                       {row.getVisibleCells().map((cell) => (

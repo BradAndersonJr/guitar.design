@@ -4,7 +4,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Layers, SquareMousePointer, TextCursorInput } from 'lucide-react'
 import parameterConfig from '@/config/parameterConfig.json'
 
-interface ToolbarProps {
+interface DisplayBarProps {
   unitSystem: string
   handleUnitChange: (value: string) => void
   togglePanel: () => void
@@ -13,7 +13,7 @@ interface ToolbarProps {
   isLayerBrowserOpen: boolean
 }
 
-const Toolbar: React.FC<ToolbarProps> = ({
+const DisplayBar: React.FC<DisplayBarProps> = ({
   unitSystem,
   handleUnitChange,
   togglePanel,
@@ -117,4 +117,4 @@ const Toolbar: React.FC<ToolbarProps> = ({
   )
 }
 
-export default Toolbar
+export default DisplayBar

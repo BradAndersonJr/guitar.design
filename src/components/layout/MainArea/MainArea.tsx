@@ -1,7 +1,7 @@
 import React from 'react';
-import { SVGCanvas } from '@/components/canvas';
+import { Canvas } from '@/components/canvas';
 import { ParametersPanel } from '@/components/parameters';
-import { ParameterBar } from '@/components/parameter-bar';
+import { DisplayBar } from '@/components/display-bar';
 import LayerBrowser from '@/components/layers/LayerBrowser';
 
 interface MainAreaProps {
@@ -41,7 +41,7 @@ const MainArea: React.FC<MainAreaProps> = ({
     <main className="h-full overflow-hidden">
       <div className="h-full flex flex-col bg-gray-50 rounded-lg p-4">
         {!showInitialMenu && (
-          <ParameterBar
+          <DisplayBar
             isPanelOpen={isPanelOpen}
             togglePanel={togglePanel}
             unitSystem={unitSystem}
@@ -59,7 +59,7 @@ const MainArea: React.FC<MainAreaProps> = ({
           )}
           <div className={`absolute inset-0 transition-all duration-150 ease-out ${isPanelOpen ? 'right-[calc(24rem+0.5rem)]' : ''} ${isLayerBrowserOpen ? 'left-[calc(20rem+0.5rem)]' : ''}`}>
             <div className="h-full">
-              <SVGCanvas
+              <Canvas
                 className="h-full rounded-lg"
                 isPanelOpen={isPanelOpen}
                 showInitialMenu={showInitialMenu}

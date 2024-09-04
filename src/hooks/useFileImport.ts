@@ -6,7 +6,7 @@ export const useFileImport = () => {
   const importFile = () => {
     const input = document.createElement('input')
     input.type = 'file'
-    input.accept = '.json,.svg' // Add more file types if needed
+    input.accept = '.guitar' // Added .guitar
 
     input.onchange = (e: Event) => {
       const file = (e.target as HTMLInputElement).files?.[0]

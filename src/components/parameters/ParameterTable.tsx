@@ -199,10 +199,10 @@ const ParameterTable: React.FC = () => {
                     density === "comfortable" ? "h-9" : 
                     "h-11"
                   } ${
-                    row.original.type === "group" ? "bg-gray-50" : ""
+                    row.original.type === "group" ? "bg-secondary" : ""
                   } ${
                     row.original.advanced ? "bg-blue-50" : ""
-                  } hover:bg-gray-50 transition-colors`}
+                  } hover:bg-secondary transition-colors`}
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell 

@@ -109,7 +109,7 @@ const ParameterPanel: React.FC<ParameterPanelProps> = ({
     isPanelOpen ? 'translate-x-0' : 'translate-x-full'
   }`}
 >
-      <div className="flex flex-col h-full bg-gray-50 text-gray-900 rounded-lg">
+      <div className="flex flex-col h-full bg-secondary text-gray-900 rounded-lg">
         <div className="flex flex-col gap-4 p-4">
           <div className="flex items-center justify-between">
             <h2 className="text-base font-medium text-gray-950">
@@ -160,7 +160,7 @@ const ParameterPanel: React.FC<ParameterPanelProps> = ({
         </div>
         <div className="flex justify-center z-10 translate-y-px"> {/* Changed from justify-between to justify-center */}
           <div className="relative flex-1 text-sm max-w-md"> {/* Added max-w-md to limit the width */}
-            <div className="flex h-full items-end justify-center gap-2 px-2"> {/* Changed gap-1 to gap-2 for more spacing */}
+            <div className="flex h-full items-end justify-center gap-4 px-2"> {/* Changed gap-1 to gap-2 for more spacing */}
               <TabButton active={activeTab === "General"} onClick={() => setActiveTab("General")}>
                 General
               </TabButton>
@@ -320,9 +320,9 @@ function TabButton({ children, active, onClick }: { children: React.ReactNode; a
     >
       {active && (
         <>
-          <div className="absolute bottom-0 right-[-5px] z-20 h-[5px] w-[5px] rounded-bl-[4px] border-b border-l bg-gray-50" />
+          <div className="absolute bottom-0 right-[-5px] z-20 h-[5px] w-[5px] rounded-bl-[4px] border-b border-l bg-secondary" />
           <div className="absolute bottom-0 right-[-5px] z-10 h-[5px] w-[5px] bg-white" />
-          <div className="absolute bottom-0 left-[-5px] z-20 h-[5px] w-[5px] rounded-br-[4px] border-b border-r bg-gray-50" />
+          <div className="absolute bottom-0 left-[-5px] z-20 h-[5px] w-[5px] rounded-br-[4px] border-b border-r bg-secondary" />
           <div className="absolute bottom-0 left-[-5px] z-10 h-[5px] w-[5px] bg-white" />
         </>
       )}

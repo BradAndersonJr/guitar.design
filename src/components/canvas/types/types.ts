@@ -1,0 +1,1 @@
+export type GridStyle = 'lines' | 'dots'

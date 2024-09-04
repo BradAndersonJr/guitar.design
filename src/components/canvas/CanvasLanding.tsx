@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from '@/components/ui/button'
-import { FilePlus2, ImportIcon, Wand2Icon } from 'lucide-react'
+import { FilePlus2, FolderOpen, Wand2Icon } from 'lucide-react'
 import { useFileImport } from '@/hooks/useFileImport'
 import { cn } from "@/lib/utils"
 import GridPattern from "@/components/ui/magicui/grid-pattern"
@@ -23,10 +23,10 @@ const CanvasLanding: React.FC<CanvasLandingProps> = ({ onNewDesign }) => {
   return (
     <div className="relative h-full w-full">
       <GridPattern
-        width={30}
-        height={30}
-        x={-1}
-        y={-1}
+        width={32}
+        height={32}
+        x={0}
+        y={0}
         strokeDasharray={"4 2"}
         className={cn(
           "[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]",
@@ -42,20 +42,21 @@ const CanvasLanding: React.FC<CanvasLandingProps> = ({ onNewDesign }) => {
             <FilePlus2 className="mr-2 h-4 w-4" />
             <span className="flex-grow">New Design</span>
             <span className="text-xs text-gray-500">
-              <span className="border px-0.5 rounded text-[10px]">Ctrl</span>+
-              <span className="border px-0.5 rounded text-[10px]">Alt</span>+
-              <span className="border px-0.5 rounded text-[10px]">N</span>
+              <span className="border px-0.5 rounded text-xs">Ctrl</span>+
+              <span className="border px-0.5 rounded text-xs">Alt</span>+
+              <span className="border px-0.5 rounded text-xs">N</span>
             </span>
           </div>
           <div 
             className="flex items-center px-2 py-2 rounded-md hover:bg-gray-100 text-sm cursor-pointer"
             onClick={handleImportDesign}
           >
-            <ImportIcon className="mr-2 h-4 w-4" />
-            <span className="flex-grow">Import Design</span>
+            <FolderOpen className="mr-2 h-4 w-4" />
+            <span className="flex-grow">Open Design</span>
             <span className="text-xs text-gray-500">
-              <span className="border px-0.5 rounded text-[10px]">Ctrl</span>+
-              <span className="border px-0.5 rounded text-[10px]">I</span>
+              <span className="border px-0.5 rounded text-xs">Ctrl</span>+
+              <span className="border px-0.5 rounded text-xs">Alt</span>+
+              <span className="border px-0.5 rounded text-xs">O</span>
             </span>
           </div>
           <div className="px-2">

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import { Button } from "@/components/ui/button"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { Settings } from 'lucide-react'
@@ -37,16 +37,30 @@ const CanvasGridSettings: React.FC<CanvasGridSettingsProps> = ({
   dashedMinorGrid,
   setDashedMinorGrid
 }) => {
-  const handleMenuItemClick = (action: () => void) => (e: React.MouseEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
+  const [isTooltipEnabled, setIsTooltipEnabled] = useState(true);
+  const tooltipTimeoutRef = useRef<number | null>(null);
+
+  const handleMenuItemClick = (action: () => void) => (event: Event) => {
+    event.preventDefault()
     action()
+  }
+
+  const handleDropdownOpenChange = (open: boolean) => {
+    if (!open) {
+      setIsTooltipEnabled(false);
+      if (tooltipTimeoutRef.current) {
+        clearTimeout(tooltipTimeoutRef.current);
+      }
+      tooltipTimeoutRef.current = window.setTimeout(() => {
+        setIsTooltipEnabled(true);
+      }, 500); // 500ms delay before re-enabling the tooltip
+    }
   }
 
   return (
     <TooltipProvider>
       <Tooltip>
-        <DropdownMenu>
+        <DropdownMenu onOpenChange={handleDropdownOpenChange}>
           <DropdownMenuTrigger asChild>
             <TooltipTrigger asChild>
               <Button 
@@ -87,9 +101,11 @@ const CanvasGridSettings: React.FC<CanvasGridSettingsProps> = ({
             </DropdownMenuGroup>
           </DropdownMenuContent>
         </DropdownMenu>
-        <TooltipContent>
-          <p>Grid Settings</p>
-        </TooltipContent>
+        {isTooltipEnabled && (
+          <TooltipContent>
+            <p>Grid Settings</p>
+          </TooltipContent>
+        )}
       </Tooltip>
     </TooltipProvider>
   )

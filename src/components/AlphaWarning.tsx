@@ -7,10 +7,7 @@ export function AlphaWarning() {
   const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
-    const hasSeenWarning = localStorage.getItem('hasSeenAlphaWarning');
-    if (hasSeenWarning !== 'true') {
-      setIsOpen(true);
-    }
+    setIsOpen(true);
   }, [])
 
   const handleDiscordClick = () => {
@@ -20,7 +17,6 @@ export function AlphaWarning() {
 
   const handleDismiss = () => {
     setIsOpen(false);
-    localStorage.setItem('hasSeenAlphaWarning', 'true');
   }
 
   return (

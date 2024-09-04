@@ -16,7 +16,7 @@
    │  │  │  ├─ DesignWizard.tsx
    │  │  │  ├─ GridSettings.tsx
    │  │  │  ├─ index.ts
-   │  │  │  └─ SVGCanvas.tsx
+   │  │  │  └─ Canvas.tsx
 
    │  │  ├─ layers
    │  │  │  ├─ index.ts
@@ -90,7 +90,7 @@
    │  │  ├─ NavigationMenu.tsx
    │  │  ├─ ParameterPanel.tsx
    │  │  ├─ Sidebar.tsx
-   │  │  ├─ SVGCanvas.tsx
+   │  │  ├─ Canvas.tsx
    │  │  ├─ Toolbar.tsx
 
    │  ├─ config
